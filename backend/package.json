@@ -9,13 +9,20 @@
     "dev": "node --watch server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["express", "api", "backend", "fruit", "blender"],
+  "keywords": [
+    "express",
+    "api",
+    "backend",
+    "fruit",
+    "blender"
+  ],
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "express": "^5.1.0",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3"
+    "dd-trace": "^5.67.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
   },
   "engines": {
     "node": ">=18.0.0"

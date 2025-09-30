@@ -1,3 +1,4 @@
+import tracer from 'dd-trace';
 import express from 'express';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
@@ -6,6 +7,7 @@ import { FRUITS } from './constants.js';
 import { config } from './config.js';
 import dotenv from 'dotenv';
 
+tracer.init();
 dotenv.config();
 
 // ES6 modules don't have __dirname, so we create it
