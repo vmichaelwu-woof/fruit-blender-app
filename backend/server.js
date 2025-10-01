@@ -7,6 +7,7 @@ import { FRUITS } from './constants.js';
 import { config } from './config.js';
 import dotenv from 'dotenv';
 
+// APM Setup
 tracer.init();
 dotenv.config();
 
