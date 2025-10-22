@@ -9,8 +9,8 @@ export default function SDKInitializer() {
     if (typeof window !== 'undefined' && !datadogRum.getInitConfiguration()) {
       datadogRum.init({
         // RUM Setup
-        applicationId: '6e7aa102-17b8-47a4-922c-b578599f68d7',
-        clientToken: 'pubb0f4fc9fa8618c395e248b945af91bcf',
+        applicationId: process.env.NEXT_PUBLIC_DD_APPLICATION_ID,
+        clientToken: process.env.NEXT_PUBLIC_DD_CLIENT_TOKEN,
         site: 'datadoghq.com',
         service: 'fruit-blender-frontend',
         env: 'dev',

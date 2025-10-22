@@ -17,12 +17,27 @@ fruit-blender/
 
 ## Quick Start
 
-### Install Dependencies
+### 1. Install Dependencies
 ```bash
 npm run install:all
 ```
 
-### Run Development Servers
+### 2. Setup Environment Variables
+
+Copy the example env file and add your Datadog credentials:
+
+```bash
+cd frontend
+cp env.example .env.local
+```
+
+Edit `.env.local` and add your Datadog RUM credentials:
+```
+NEXT_PUBLIC_DD_APPLICATION_ID=your_application_id
+NEXT_PUBLIC_DD_CLIENT_TOKEN=your_client_token
+```
+
+### 3. Run Development Servers
 ```bash
 npm run dev
 ```
