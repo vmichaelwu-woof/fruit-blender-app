@@ -1,32 +1,17 @@
 import { useState, useEffect } from 'react';
-import { cartService } from '../services/cartService';
-import { handleApiError } from '../utils/errorHandler';
+import { API_URL } from '../config';
 
 export function useFruits() {
   const [fruits, setFruits] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    loadFruits();
+    fetch(`${API_URL}/fruits`)
+      .then(res => res.json())
+      .then(data => setFruits(data.fruits || []))
+      .catch(err => console.error('Failed to load fruits:', err))
+      .finally(() => setIsLoading(false));
   }, []);
 
-  const loadFruits = async () => {
-    try {
-      setIsLoading(true);
-      const fruitsData = await cartService.getFruits();
-      setFruits(fruitsData);
-    } catch (err) {
-      setError(handleApiError(err, 'Loading fruits'));
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  return {
-    fruits,
-    isLoading,
-    error,
-    loadFruits
-  };
+  return { fruits, isLoading };
 }

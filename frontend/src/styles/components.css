@@ -1,0 +1,364 @@
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: white;
+  border-right: 1px solid #ddd;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  background: #f5f5f5;
+  color: #333;
+}
+
+.sidebar-link.active {
+  background: #333;
+  color: white;
+}
+
+.sidebar-divider {
+  border-top: 1px solid #ddd;
+  margin: 16px 0;
+}
+
+.sidebar-label {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+  padding-left: 16px;
+}
+
+/* Layout */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.app-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Shop Page */
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 20px;
+}
+
+.shop-section {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Fruit Card */
+.fruit-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.fruit-card-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.fruit-card-price {
+  font-size: 14px;
+  color: #666;
+}
+
+.fruit-card-button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.fruit-card-button:hover {
+  background: #555;
+}
+
+/* Cart */
+.cart-empty {
+  text-align: center;
+  padding: 40px 0;
+  color: #999;
+}
+
+.cart-empty-subtitle {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-item-name {
+  font-weight: 600;
+}
+
+.cart-item-count {
+  background: #e0e0e0;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.cart-item-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.cart-button {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cart-button:hover {
+  background: #e0e0e0;
+}
+
+.cart-summary {
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cart-total-price {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.cart-blend-button {
+  width: 100%;
+  padding: 12px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.cart-blend-button:hover {
+  background: #555;
+}
+
+.cart-blend-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Fruit Detail Page */
+.fruit-detail {
+  padding: 20px;
+  max-width: 800px;
+}
+
+.fruit-detail-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.fruit-detail-header {
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.fruit-detail-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.fruit-detail-price {
+  font-size: 18px;
+  color: #666;
+}
+
+.fruit-detail-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.fruit-detail-text {
+  color: #666;
+  line-height: 1.6;
+}
+
+.fruit-detail-text.italic {
+  font-style: italic;
+}
+
+.fruit-detail-list {
+  padding-left: 20px;
+}
+
+.fruit-detail-list li {
+  color: #666;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* History Page */
+.history-container {
+  padding: 20px;
+}
+
+.history-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.history-empty {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 40px;
+  text-align: center;
+  color: #999;
+}
+
+.history-empty-subtitle {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.history-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.history-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.history-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.history-card-number {
+  font-weight: 600;
+}
+
+.history-card-date {
+  color: #666;
+  font-size: 14px;
+}
+
+.history-items {
+  display: grid;
+  gap: 8px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.history-item-price {
+  color: #666;
+}
+
+.history-total {
+  border-top: 1px solid #ddd;
+  margin-top: 12px;
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.blending-container {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.blending-text {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
