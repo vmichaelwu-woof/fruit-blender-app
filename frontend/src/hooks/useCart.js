@@ -1,77 +1,89 @@
 import { useState, useEffect } from 'react';
-import { cartService } from '../services/cartService';
-import { calculateTotalItems, calculateTotalPrice } from '../utils/calculations';
-import { handleApiError } from '../utils/errorHandler';
+import { API_URL, FRUITS } from '../config';
 
 export function useCart() {
   const [cart, setCart] = useState({});
   const [blendHistory, setBlendHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  // Load initial data
+  // Fetch initial cart state
   useEffect(() => {
-    loadCartData();
+    fetch(`${API_URL}/cart`)
+      .then(res => res.json())
+      .then(data => {
+        setCart(data.cart || {});
+        setBlendHistory(data.blendHistory || []);
+      })
+      .catch(err => console.error('Failed to load cart:', err));
   }, []);
-
-  const loadCartData = async () => {
-    try {
-      setIsLoading(true);
-      const data = await cartService.getCart();
-      setCart(data.cart || {});
-      setBlendHistory(data.blendHistory || []);
-    } catch (err) {
-      setError(handleApiError(err, 'Loading cart data'));
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const addToCart = async (fruitId) => {
     try {
-      const data = await cartService.addToCart(fruitId);
+      const res = await fetch(`${API_URL}/cart`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'add', fruitId })
+      });
+      const data = await res.json();
       setCart(data.cart);
-      setBlendHistory(data.blendHistory);
     } catch (err) {
-      setError(handleApiError(err, 'Adding to cart'));
+      console.error('Failed to add to cart:', err);
     }
   };
 
   const removeFromCart = async (fruitId) => {
     try {
-      const data = await cartService.removeFromCart(fruitId);
+      const res = await fetch(`${API_URL}/cart`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'remove', fruitId })
+      });
+      const data = await res.json();
       setCart(data.cart);
-      setBlendHistory(data.blendHistory);
     } catch (err) {
-      setError(handleApiError(err, 'Removing from cart'));
+      console.error('Failed to remove from cart:', err);
     }
   };
 
   const blendCart = async () => {
+    setIsLoading(true);
     try {
-      const data = await cartService.blendCart();
+      const res = await fetch(`${API_URL}/cart`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'blend' })
+      });
+      const data = await res.json();
       setCart(data.cart);
       setBlendHistory(data.blendHistory);
-      return data.blend;
     } catch (err) {
-      setError(handleApiError(err, 'Blending cart'));
-      throw err;
+      console.error('Failed to blend:', err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const getTotalItems = () => calculateTotalItems(cart);
-  const getTotalPrice = () => calculateTotalPrice(cart);
+  // Calculate total items
+  const getTotalItems = () => {
+    return Object.values(cart).reduce((sum, count) => sum + count, 0);
+  };
+
+  // Calculate total price
+  const getTotalPrice = () => {
+    return Object.entries(cart).reduce((total, [fruitId, count]) => {
+      const fruit = FRUITS.find(f => f.id === fruitId);
+      return total + (fruit?.price || 0) * count;
+    }, 0);
+  };
 
   return {
     cart,
     blendHistory,
     isLoading,
-    error,
     addToCart,
     removeFromCart,
     blendCart,
     getTotalItems,
-    getTotalPrice,
-    loadCartData
+    getTotalPrice
   };
 }

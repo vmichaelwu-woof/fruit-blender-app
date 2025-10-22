@@ -15,7 +15,8 @@
     "start:frontend": "cd frontend && npm start",
     "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
     "lint": "cd frontend && npm run lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "traffic": "node scripts/generate-traffic.js",
+    "traffic:rum": "node scripts/generate-rum-traffic.js"
   },
   "keywords": [
     "fruit",
@@ -28,7 +29,8 @@
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "playwright": "^1.56.1"
   },
   "engines": {
     "node": ">=18.0.0"

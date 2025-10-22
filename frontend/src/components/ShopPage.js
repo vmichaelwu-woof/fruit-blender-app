@@ -12,11 +12,10 @@ export default function ShopPage({
   getTotalPrice 
 }) {
   return (
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Fruit Shop */}
-      <div className="bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-2xl font-semibold mb-6 text-black">Fresh Fruits</h2>
-        <div className="space-y-4">
+    <div className="shop-grid">
+      <div className="shop-section">
+        <h2 className="section-title">Available Fruits</h2>
+        <div>
           {fruits.map(fruit => (
             <FruitCard 
               key={fruit.id} 
@@ -27,7 +26,6 @@ export default function ShopPage({
         </div>
       </div>
 
-      {/* Blender Cart */}
       <BlenderCart
         cart={cart}
         fruits={fruits}
